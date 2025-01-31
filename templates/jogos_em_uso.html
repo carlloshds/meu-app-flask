@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Feira Games - Jogos em Uso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3b0e0;
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px #5D3FD3;
+        }
+        h1 {
+            color: #5D3FD3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogos em Uso</h1>
+    <div class="container">
+        {% if jogos %}
+            <ul>
+                {% for jogo in jogos %}
+                    <li><strong>{{ jogo[2] }}</strong> - Conta: {{ jogo[1] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum jogo em uso.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

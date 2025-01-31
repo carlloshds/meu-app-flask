@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Feira Games - Painel de Administração</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3b0e0;
+            text-align: center;
+            margin: 0;
+        }
+        h1 {
+            color: #5D3FD3;
+            margin-top: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px #5D3FD3;
+        }
+        .botao {
+            background-color: #5D3FD3;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            width: 60%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .search-container button {
+            background: #5D3FD3;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Painel de Administração - Feira Games</h1>
+    <div class="container">
+        <h2>Pesquisar Conta</h2>
+        <div class="search-container">
+            <input type="text" id="searchEmail" placeholder="Digite o e-mail">
+            <button onclick="pesquisarEmail()">🔍</button>
+        </div>
+        <h2>Opções</h2>
+        <a href="/cadastrar"><button class="botao">Cadastrar Nova Conta</button></a>
+        <a href="/gerar"><button class="botao">Gerar Código</button></a>
+    </div>
+
+    <script>
+        function pesquisarEmail() {
+            var email = document.getElementById("searchEmail").value;
+            fetch('/pesquisar_email', {
+                method: 'POST',
+                body: new URLSearchParams({ 'email': email }),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.existe) {
+                    alert("Este e-mail já está cadastrado!");
+                } else {
+                    alert("E-mail não encontrado.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

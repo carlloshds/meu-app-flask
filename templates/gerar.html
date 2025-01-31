@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Feira Games - Gerar Código</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3b0e0;
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px #5D3FD3;
+        }
+        h1 {
+            color: #5D3FD3;
+        }
+        .codigo-box {
+            background: #5D3FD3;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .botao {
+            background-color: #5D3FD3;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerar Código - Feira Games</h1>
+    <div class="container">
+        <form action="/gerar" method="POST">
+            <label>Digite seu e-mail:</label>
+            <input type="email" name="email" required>
+            <button class="botao" type="submit">Gerar Código</button>
+        </form>
+
+        {% if codigo %}
+            <h2>Seu código gerado:</h2>
+            <div class="codigo-box">{{ codigo }}</div>
+            <p>{{ tipo }}</p>
+        {% endif %}
+
+        {% if erro %}
+            <p style="color: red;">{{ erro }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

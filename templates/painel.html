@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <title>Painel de Administração</title>
+</head>
+<body>
+    <h2>Gerenciar Contas</h2>
+    
+    <h3>Cadastrar Nova Conta</h3>
+    <form method="post" action="{{ url_for('cadastrar') }}">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Chave OTP:</label>
+        <input type="text" name="chave_otp">
+        <label>Códigos de Backup (um por linha):</label>
+        <textarea name="codigos_backup"></textarea>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h3>Pesquisar Conta</h3>
+    <form method="get" action="{{ url_for('pesquisar') }}">
+        <input type="email" name="email" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <h3>Gerar Código</h3>
+    <form method="post" action="{{ url_for('gerar') }}">
+        <input type="email" name="email" required>
+        <button type="submit">Gerar</button>
+    </form>
+
+    <h3>Excluir Conta</h3>
+    <form method="post" action="{{ url_for('deletar') }}">
+        <input type="email" name="email" required>
+        <button type="submit">Excluir</button>
+    </form>
+</body>
+</html>
