@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Painel Administrativo - Feira Games</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #d3b0e0; text-align: center; }
+        .container { background: white; padding: 20px; border-radius: 8px; width: 50%; margin: auto; }
+        h1 { color: #5D3FD3; }
+        .botao { background-color: #5D3FD3; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 5px; margin: 5px; }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        <label>Senha:</label>
-        <input type="password" name="password" required>
-        <button type="submit">Entrar</button>
-    </form>
+    <h1>Painel Administrativo</h1>
+    <div class="container">
+        <h2>Contas Cadastradas</h2>
+        <ul>
+            {% for conta in contas %}
+                <li>
+                    {{ conta[0] }}
+                    <form action="/excluir" method="POST" style="display: inline;">
+                        <input type="hidden" name="email" value="{{ conta[0] }}">
+                        <button class="botao" type="submit">Excluir</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/cadastrar"><button class="botao">Cadastrar Nova Conta</button></a>
+        <a href="/logout"><button class="botao">Sair</button></a>
+    </div>
 </body>
 </html>
