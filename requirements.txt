@@ -69,4 +69,4 @@ wikipedia==1.4.0
 wsproto==1.2.0
 yarl==1.18.3
 zope.interface==7.2
-"gunicorn==21.2.0" 
+gunicorn==21.2.0
